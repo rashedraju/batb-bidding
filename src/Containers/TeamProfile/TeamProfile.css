@@ -1,0 +1,16 @@
+.teamProfileTeamImg {
+    width: 7rem;
+}
+
+.teamProfileCard {
+    max-width: 20rem;
+    height: 11rem;
+    background: #fff;
+}
+
+.teamProfilePlayerImg {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 10%;
+    margin-bottom: 0.5rem;
+}

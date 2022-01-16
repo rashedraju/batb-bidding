@@ -1,0 +1,20 @@
+.PlayserProfileBG {
+}
+
+.playerOwner {
+    padding: 0 15rem;
+    border-radius: 10rem;
+}
+.playerProfileImg {
+    width: 25rem;
+}
+.ownerTeamImg {
+    height: 10rem;
+    border-radius: 50%;
+}
+
+.player_info {
+    letter-spacing: 1.2px;
+    font-size: 20px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,140 @@
+.biddingScreeen {
+    margin-top: 5rem !important;
+}
+
+.biddingPlayerImg {
+    background-image: url(http://localhost:3000/static/media/photo-frame.6248b4fe8089afd5bb9a.png);
+    width: 25rem;
+    height: 25rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.biddingPlayerProfileImg {
+    width: 16rem;
+    height: 18rem;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    margin-top: -2.9rem;
+    margin-left: -1.1rem;
+}
+
+.biddingPriceBox {
+    position: relative;
+    background: #111845a6;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgb(23, 32, 90);
+    border: 2px solid #2a3cad;
+    color: white;
+    padding: 20px;
+}
+
+.biddingPriceBox span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.biddingPriceBox span:nth-child(1) {
+    transform: rotate(0deg);
+    left: -50%;
+}
+
+.biddingPriceBox span:nth-child(2) {
+    transform: rotate(90deg);
+    left: 42%;
+    top: -50%;
+}
+
+.biddingPriceBox span:nth-child(3) {
+    transform: rotate(180deg);
+    left: 50%;
+}
+
+.biddingPriceBox span:nth-child(4) {
+    transform: rotate(270deg);
+    left: -42%;
+    top: 50%;
+}
+
+.biddingPriceBox span:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #e72582;
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+    50% {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    50.1% {
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+
+    100% {
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+}
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
+
+.biddingStatusBox {
+    position: relative;
+}
+
+.biddingStatus {
+    position: relative;
+    top: 20%;
+    left: 5%;
+    font-size: 4rem;
+    color: #ffba00;
+}

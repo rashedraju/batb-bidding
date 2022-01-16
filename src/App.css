@@ -1,38 +1,106 @@
 .App {
-  text-align: center;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem 5rem;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.batLogo {
+    height: 5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.turnamentLogo {
+    height: 8rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.rounded-4 {
+    border-radius: 1.5rem;
 }
 
-.App-link {
-  color: #61dafb;
+.bat-pink {
+    color: #e72582 !important;
+}
+.bat-bg-pink {
+    background-color: #e72582 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.bat-orange {
+    color: #ef7d00 !important;
+}
+
+.bat-bg-orange {
+    background-color: #311b92 !important;
+}
+
+.bat-bg-secondary {
+    background-color: #3e7799 !important;
+}
+
+.bat-bg-beguni {
+    background-color: #5a328a !important;
+}
+
+.text-bold {
+    font-weight: 600;
+}
+
+.bat-bg-primary {
+    background-color: #0e2b63 !important;
+}
+.bat-primary {
+    color: #0e2b63 !important;
+}
+
+.bat-secondary {
+    color: #004f9f !important;
+}
+
+.mb-7 {
+    margin-bottom: 7rem !important;
+}
+
+.pr-5 {
+    padding-right: 5rem;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.mr-2 {
+    margin-right: 2rem;
+}
+
+.rounded-5 {
+    border-radius: 5rem;
+}
+
+.border-orange {
+    border-color: #ef7d00 !important;
+}
+
+.bg-orange {
+    background-color: #ef7d00 !important;
+}
+
+.w-150 {
+    width: 150px;
+}
+
+.ls-1-3 {
+    letter-spacing: 1.3px;
+}
+
+.px-6 {
+    padding: 0 6rem;
+}
+
+.loading-img {
+    height: 50rem;
+    display: block;
 }
