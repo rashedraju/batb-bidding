@@ -3,6 +3,11 @@ import Chip from '@mui/material/Chip';
 import playerImg from '../../../assets/images/players/profile.png';
 
 const Player = ({ player }) => {
+    let cardBg = '#fff';
+
+    if (player.sold_team) {
+        cardBg = '651414';
+    }
     return (
         <div className='p-2 shadow rounded-3 teamProfileCard d-flex flex-column'>
             <div className='d-flex justify-content-between gap-2'>

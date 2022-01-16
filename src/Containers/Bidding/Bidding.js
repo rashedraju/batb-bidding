@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import sixsersImg from '../../assets/images/teams/2.png';
 import './Bidding.css';
 import axios from 'axios';
 import { BIDDING_PAGE } from '../../constant';
 import anim from '../../assets/images/anim.gif';
+import { checkFile } from '../../utils';
 
 const Bidding = () => {
     const [biddingData, setBiddingData] = useState(null);
@@ -14,10 +14,6 @@ const Bidding = () => {
     const TEAM_ONE_IMG = require('../../assets/images/teams/1.png');
     const TEAM_TWO_IMG = require('../../assets/images/teams/2.png');
     const TEAM_THREE_IMG = require('../../assets/images/teams/3.png');
-
-    const profileImg = (link) => {
-        return 'http://127.0.0.1/bat-cricket/players/' + link;
-    };
 
     useEffect(() => {
         const fetchBiddingData = setInterval(() => {
@@ -71,7 +67,7 @@ const Bidding = () => {
                         </div>
                         <div className='col-4 biddingPlayerImg'>
                             <img
-                                src={profileImg(biddingData.photo)}
+                                src={`./images/players/${biddingData.photo}`}
                                 alt='player profile'
                                 className='biddingPlayerProfileImg '
                             />

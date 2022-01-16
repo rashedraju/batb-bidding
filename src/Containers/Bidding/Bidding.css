@@ -3,7 +3,7 @@
 }
 
 .biddingPlayerImg {
-    background-image: url(http://localhost:3000/static/media/photo-frame.6248b4fe8089afd5bb9a.png);
+    background-image: url('../../assets/images/photo-frame.png');
     width: 25rem;
     height: 25rem;
     background-size: contain;

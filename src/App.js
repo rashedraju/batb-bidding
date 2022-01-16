@@ -8,11 +8,14 @@ import TeamProfile from './Containers/TeamProfile/TeamProfile';
 import Bidding from './Containers/Bidding/Bidding';
 import axios from 'axios';
 import { CURRENT_PAGE } from './constant';
+import anim from './assets/images/anim.gif';
 
 function App() {
-    let [currentPage, setCurrentPage] = useState(3);
+    let [currentPage, setCurrentPage] = useState(0);
 
-    let currentPageEl = <PlayerLists />;
+    let currentPageEl = (
+        <img src={anim} alt='' className='loading-img mx-auto' />
+    );
 
     if (currentPage === 1) {
         currentPageEl = <Bidding />;
@@ -30,19 +33,18 @@ function App() {
     }
 
     useEffect(() => {
-        const fetchCurrentPage = setInterval(() => {
-            try {
-                axios.get(CURRENT_PAGE).then((res) => {
-                    setCurrentPage(res.data.current_page);
-                });
-            } catch (error) {
-                console.log(error);
-            }
-        }, 2000);
-
-        return () => {
-            clearInterval(fetchCurrentPage);
-        };
+        // const fetchCurrentPage = setInterval(() => {
+        //     try {
+        //         axios.get(CURRENT_PAGE).then((res) => {
+        //             setCurrentPage(res.data.current_page);
+        //         });
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }, 2000);
+        // return () => {
+        //     clearInterval(fetchCurrentPage);
+        // };
     }, []);
 
     return (
@@ -52,7 +54,8 @@ function App() {
                 <img src={logo} alt='' className='batLogo' />
             </header>
 
-            {currentPageEl}
+            {/* {currentPageEl} */}
+            <TeamProfile />
         </div>
     );
 }

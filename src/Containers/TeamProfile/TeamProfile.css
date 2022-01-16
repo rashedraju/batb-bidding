@@ -1,5 +1,13 @@
+.teamProfileBg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    opacity: 0.1;
+}
 .teamProfileTeamImg {
-    width: 7rem;
+    width: 10rem;
 }
 
 .teamProfileCard {
