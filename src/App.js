@@ -33,18 +33,18 @@ function App() {
     }
 
     useEffect(() => {
-        // const fetchCurrentPage = setInterval(() => {
-        //     try {
-        //         axios.get(CURRENT_PAGE).then((res) => {
-        //             setCurrentPage(res.data.current_page);
-        //         });
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // }, 2000);
-        // return () => {
-        //     clearInterval(fetchCurrentPage);
-        // };
+        const fetchCurrentPage = setInterval(() => {
+            try {
+                axios.get(CURRENT_PAGE).then((res) => {
+                    setCurrentPage(res.data.current_page);
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }, 2000);
+        return () => {
+            clearInterval(fetchCurrentPage);
+        };
     }, []);
 
     return (
@@ -54,8 +54,8 @@ function App() {
                 <img src={logo} alt='' className='batLogo' />
             </header>
 
-            {/* {currentPageEl} */}
-            <TeamProfile />
+            {currentPageEl}
+            {/* <Bidding /> */}
         </div>
     );
 }

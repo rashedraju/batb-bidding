@@ -1,39 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PlayerList.css';
 import Player from './Player/Player';
+import { PLAYER_LIST_PAGE } from '../../constant';
+import axios from 'axios';
 
 const PlayerLists = () => {
-    const unsoldPlayer = {
-        name: 'John Doe',
-        age: 25,
-        image: 'profile.png',
-        type: 'batter',
-        initialPrice: 20000,
-    };
+    const [palyers, setPlayers] = useState(null);
 
-    const soldPlayer = {
-        name: 'John Doe',
-        age: 25,
-        image: 'profile.png',
-        type: 'batter',
-        initialPrice: 20000,
-        teamName: 'Team Name',
-        teamImg: 'crunchers.jpeg',
-    };
+    useEffect(() => {
+        const fetchBiddingData = setInterval(() => {
+            try {
+                axios.get(PLAYER_LIST_PAGE).then((res) => {
+                    setPlayers(res.data);
+                    console.log(res.data);
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }, 5000);
 
-    const unsoldPlayersEl = new Array(4)
-        .fill(0)
-        .map((el) => <Player player={unsoldPlayer} />);
+        return () => {
+            clearInterval(fetchBiddingData);
+        };
+    }, []);
 
-    const soldPlayersEl = new Array(3)
-        .fill(0)
-        .map((el) => <Player player={soldPlayer} sold />);
+    let unsoldPlayersEl = null;
+    let soldPlayersEl = null;
 
+    if (palyers) {
+        unsoldPlayersEl = palyers.unsold_player
+            .slice(0, 7)
+            .map((el) => <Player player={el} />);
+        soldPlayersEl = palyers.sold_player
+            .slice(0, 7)
+            .map((el) => <Player player={el} />);
+    }
     return (
         <>
-            <h2 className='text-center text-white my-3 text-uppercase'>
+            <h1 className='text-center text-white my-3 text-uppercase'>
                 Player Inventory
-            </h2>
+            </h1>
             <div>
                 <div className='d-flex gap-5 justify-content-between'>
                     <h4 className='border d-block w-50 p-3 text-center rounded-4'>

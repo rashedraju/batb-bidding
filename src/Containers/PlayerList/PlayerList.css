@@ -1,6 +1,6 @@
 .playerListPlayerProfileImg {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
 }
 
@@ -10,7 +10,7 @@
     border-radius: 50%;
 }
 .playerListTeamProfileImg {
-    width: 5rem;
+    width: 7rem;
     height: 5rem;
     border-radius: 50%;
 }

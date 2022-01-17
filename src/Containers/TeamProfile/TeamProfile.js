@@ -10,51 +10,26 @@ import teamTwoImg from '../../assets/images/teams/2.png';
 import teamThreeImg from '../../assets/images/teams/3.png';
 
 const TeamProfile = () => {
-    let [teamProfileData, setTeamProfileData] = useState({
-        team_details: {
-            id: 2,
-            team_name: 'Supersonic Sixers',
-            logo: null,
-            color_code: '#1B40AB',
-            credit: 222,
-            used_credit: 0,
-        },
-        players: new Array(12).fill({
-            id: 7,
-            name: 'Jasarat Al Atun',
-            age: null,
-            photo: null,
-            designation: 'Procurement Officer - Indirects',
-            department: 'Procurement',
-            player_category: 'Bowler',
-            batting_Style: 'Right Handed',
-            bowling_Style: 'Right Arm Medium Fast',
-            category: 'C',
-            base_price: 50000,
-            already_bidded: 0,
-            sold_team: 1,
-            sold_price: 0,
-        }),
-    });
+    let [teamProfileData, setTeamProfileData] = useState(null);
 
     const playerEl = teamProfileData?.players.map((player) => (
         <Player player={player} />
     ));
 
     useEffect(() => {
-        // const fetchTeamProfileData = setInterval(() => {
-        //     try {
-        //         axios.get(TEAM_PROFILE_PAGE).then((res) => {
-        //             console.log(res.data);
-        //             setTeamProfileData(res.data);
-        //         });
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // }, 2000);
-        // return () => {
-        //     clearInterval(fetchTeamProfileData);
-        // };
+        const fetchTeamProfileData = setInterval(() => {
+            try {
+                axios.get(TEAM_PROFILE_PAGE).then((res) => {
+                    console.log(res.data);
+                    setTeamProfileData(res.data);
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }, 2000);
+        return () => {
+            clearInterval(fetchTeamProfileData);
+        };
     }, []);
 
     let backgroundImage = null;

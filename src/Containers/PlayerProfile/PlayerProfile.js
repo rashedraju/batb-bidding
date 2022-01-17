@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import PlayerProfileImg from '../../assets/images/players/profile.png';
-import sixsersImg from '../../assets/images/teams/2.png';
 import './PlayerProfile.css';
 import axios from 'axios';
 import { PLAYER_PROFILE_PAGE } from '../../constant';
 import anim from '../../assets/images/anim.gif';
+import unsoldImg from '../../assets/images/unsold.png';
+
+import teamOneImg from '../../assets/images/teams/1.png';
+import teamTwoImg from '../../assets/images/teams/2.png';
+import teamThreeImg from '../../assets/images/teams/3.png';
 
 const PlayerProfile = () => {
     const [playerProfile, setPlayerProfileData] = useState(null);
@@ -30,6 +33,20 @@ const PlayerProfile = () => {
         };
     }, []);
 
+    let teamName = '';
+    let teamImg = null;
+
+    if (playerProfile?.sold_team === 1) {
+        teamName = TEAM_ONE;
+        teamImg = teamOneImg;
+    } else if (playerProfile?.sold_team === 2) {
+        teamName = TEAM_TWO;
+        teamImg = teamTwoImg;
+    } else if (playerProfile?.sold_team === 3) {
+        teamName = TEAM_THREE;
+        teamImg = teamThreeImg;
+    }
+
     return (
         <>
             {playerProfile ? (
@@ -43,20 +60,17 @@ const PlayerProfile = () => {
                                 <h1 className='text-right'>
                                     {playerProfile.name}
                                 </h1>
-                                <div className='text-right player_info border bat-secondary text-bold text-center px-2 rounded-5 border-orange bg-orange d-inline-block'>
+                                <div className='text-right player_info border text-white text-bold text-center px-6 rounded-5 border-orange bg-orange d-inline-block'>
                                     {playerProfile.player_category}
                                 </div>
                             </div>
 
                             <div className='p-2 player_info'>
-                                Age: <strong>{playerProfile.age} Years</strong>
-                            </div>
-                            <div className='p-2 player_info'>
                                 Designation:{' '}
                                 <strong>{playerProfile.designation}</strong>
                             </div>
                             <div className='p-2 player_info'>
-                                Department:{' '}
+                                Department:
                                 <strong>{playerProfile.department}</strong>
                             </div>
                             <div className='p-2 player_info'>
@@ -73,29 +87,48 @@ const PlayerProfile = () => {
                             </div>
                         </div>
                         <img
-                            src={PlayerProfileImg}
+                            src={
+                                playerProfile.photo != null &&
+                                playerProfile.photo !== ''
+                                    ? `./images/players/${playerProfile.photo}`
+                                    : `./images/players/1616252974.png`
+                            }
                             alt='player profile'
                             className='playerProfileImg col-4'
                         />
                         <div className='col-4 d-flex flex-column'>
-                            <div className='p-2 my-2 border text-center'>
-                                <p className='mb-0'>Initial Bidding Price</p>
-                                <h2>${playerProfile.base_price}</h2>
-                            </div>
-                            <div className='p-2 my-1 d-flex gap-3 align-items-center border text-center'>
-                                <img
-                                    src={sixsersImg}
-                                    alt=''
-                                    className='p-2 ownerTeamImg'
-                                />
-                                <h3>
-                                    {playerProfile.sold_team === '1'
-                                        ? TEAM_ONE
-                                        : playerProfile.sold_team === '2'
-                                        ? TEAM_TWO
-                                        : TEAM_THREE}
-                                </h3>
-                            </div>
+                            {playerProfile.already_bidded ? (
+                                <>
+                                    <div className='p-2 my-2 border text-center'>
+                                        <p className='mb-0'>Sold Price</p>
+                                        <h2>${playerProfile.sold_price}</h2>
+                                    </div>
+                                    <div className='p-2 my-1 d-flex gap-3 align-items-center border text-center'>
+                                        <img
+                                            src={teamImg}
+                                            alt=''
+                                            className='p-2 ownerTeamImg'
+                                        />
+                                        <h3>{teamName}</h3>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className='p-2 my-2 border text-center'>
+                                        <p className='mb-0'>
+                                            Initial Bidding Price
+                                        </p>
+                                        <h2>${playerProfile.base_price}</h2>
+                                    </div>
+                                    <div className='text-center mt-5'>
+                                        <img
+                                            src={unsoldImg}
+                                            alt=''
+                                            style={{ width: '20rem' }}
+                                        />
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </>

@@ -3,7 +3,6 @@ import './Bidding.css';
 import axios from 'axios';
 import { BIDDING_PAGE } from '../../constant';
 import anim from '../../assets/images/anim.gif';
-import { checkFile } from '../../utils';
 
 const Bidding = () => {
     const [biddingData, setBiddingData] = useState(null);
@@ -67,7 +66,12 @@ const Bidding = () => {
                         </div>
                         <div className='col-4 biddingPlayerImg'>
                             <img
-                                src={`./images/players/${biddingData.photo}`}
+                                src={
+                                    biddingData.photo != null &&
+                                    biddingData.photo !== ''
+                                        ? `./images/players/${biddingData.photo}`
+                                        : `./images/players/1616252974.png`
+                                }
                                 alt='player profile'
                                 className='biddingPlayerProfileImg '
                             />
@@ -116,7 +120,7 @@ const Bidding = () => {
                                 <div className='p-2 my-1 d-flex gap-3 align-items-center mt-4 text-center biddingStatusBox'>
                                     <h1 className='biddingStatus'>
                                         Bidding is Going On..
-                                        <div class='lds-ripple'>
+                                        <div className='lds-ripple'>
                                             <div></div>
                                             <div></div>
                                         </div>
