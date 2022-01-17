@@ -5,14 +5,15 @@
     transform: translate(-50%, -50%);
     height: 100%;
     opacity: 0.1;
+    z-index: -999999;
 }
 .teamProfileTeamImg {
     width: 10rem;
 }
 
 .teamProfileCard {
-    width: 15rem;
-    height: 11rem;
+    width: 17rem;
+    height: 15rem;
     background: #fff;
 }
 

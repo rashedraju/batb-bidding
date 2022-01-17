@@ -4,18 +4,21 @@
     padding: 1rem 5rem;
     overflow: hidden;
     margin: 0 auto;
+    text-transform: uppercase;
 }
 
 .batLogo {
     height: 5rem;
+    transform: translateX(-1rem);
+    position: absolute;
+    right: 0;
 }
-
 .turnamentLogo {
     height: 8rem;
 }
 
 .rounded-4 {
-    border-radius: 1.5rem;
+    border-radius: 2rem;
 }
 
 .bat-pink {

@@ -4,7 +4,7 @@ import './TeamProfile.css';
 import Player from './Player/Player';
 import axios from 'axios';
 import { TEAM_PROFILE_PAGE } from '../../constant';
-import anim from '../../assets/images/anim.gif';
+import Animation from '../Animation/Animation';
 import teamOneImg from '../../assets/images/teams/1.png';
 import teamTwoImg from '../../assets/images/teams/2.png';
 import teamThreeImg from '../../assets/images/teams/3.png';
@@ -48,7 +48,11 @@ const TeamProfile = () => {
                     <h1 className='text-center text-white my-4 pr-5'>
                         {teamProfileData.team_details.team_name}
                     </h1>
-                    <div className='border bg-light shadow p-3 d-flex justify-content-between align-items-center rounded-3'>
+                    <div
+                        className='border bg-light shadow p-3 px-5 d-flex justify-content-between align-items-center rounded-3'
+                        style={{
+                            backgroundImage: `linear-gradient(45deg, ${teamProfileData.team_details.color_code}, #dfdfdf)`,
+                        }}>
                         <div className='d-flex gap-5 align-items-center'>
                             <img
                                 src={require(`../../assets/images/teams/${teamProfileData.team_details.id}.png`)}
@@ -56,12 +60,29 @@ const TeamProfile = () => {
                                 className='teamProfileTeamImg'
                             />
                             <div>
-                                <h4 className='bat-primary'>
+                                <h4 className='text-white'>
                                     {teamProfileData.team_details.team_name}
                                 </h4>
-                                <h4 className='bat-primary'>
-                                    #{teamProfileData.team_details.id}
-                                </h4>
+                                <div className='d-flex gap-3'>
+                                    <div className='bat-bg-primary px-3 py-2 rounded-5 d-flex gap-3 align-items-center'>
+                                        <h6 className='mb-0'>Category A : </h6>
+                                        <h6 className='mb-0'>
+                                            {teamProfileData.team_details.catA}
+                                        </h6>
+                                    </div>
+                                    <div className='bat-bg-primary px-3 py-2 rounded-5 d-flex gap-3 align-items-center'>
+                                        <h6 className='mb-0'>Category B : </h6>
+                                        <h6 className='mb-0'>
+                                            {teamProfileData.team_details.catB}
+                                        </h6>
+                                    </div>
+                                    <div className='bat-bg-primary px-3 py-2 rounded-5 d-flex gap-3 align-items-center'>
+                                        <h6 className='mb-0'>Category C : </h6>
+                                        <h6 className='mb-0'>
+                                            {teamProfileData.team_details.catC}
+                                        </h6>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div className='d-flex gap-4'>
@@ -77,19 +98,21 @@ const TeamProfile = () => {
                                 <p className='text-center bat-primary mb-0'>
                                     Used Credit
                                 </p>
-                                <h3 className='px-3 py-1 text-white text-center text-bold rounded-5 w-150 bat-bg-primary ls-1-3 w-100'>
-                                    ${teamProfileData.team_details.used_credit}
+                                <h3 className='px-3 py-1 text-white text-center text-bold rounded-5 w-150 bg-danger ls-1-3 w-100'>
+                                    $
+                                    {teamProfileData.team_details.used_credit.toLocaleString()}
                                 </h3>
                             </div>
                             <div>
                                 <p className='text-center bat-primary mb-0'>
                                     Current Credit
                                 </p>
-                                <h3 className='px-3 py-1 text-white text-center text-bold rounded-5 w-150 bat-bg-primary ls-1-3 w-100'>
+                                <h3 className='px-3 py-1 text-white text-center text-bold rounded-5 w-150 bg-success ls-1-3 w-100'>
                                     $
-                                    {teamProfileData.team_details.credit -
-                                        teamProfileData.team_details
-                                            .used_credit}
+                                    {(
+                                        teamProfileData.team_details.credit -
+                                        teamProfileData.team_details.used_credit
+                                    ).toLocaleString()}
                                 </h3>
                             </div>
                         </div>
@@ -105,7 +128,7 @@ const TeamProfile = () => {
                     />
                 </>
             ) : (
-                <img src={anim} alt='' className='loading-img mx-auto' />
+                <Animation />
             )}
         </>
     );

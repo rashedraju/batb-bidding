@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Bidding.css';
 import axios from 'axios';
 import { BIDDING_PAGE } from '../../constant';
-import anim from '../../assets/images/anim.gif';
+import Animation from '../Animation/Animation';
+import soldOut from '../../assets/images/sold-2.png';
 
 const Bidding = () => {
     const [biddingData, setBiddingData] = useState(null);
@@ -36,32 +37,35 @@ const Bidding = () => {
             {biddingData ? (
                 <div className='biddingScreeen'>
                     <div className='row'>
-                        <div className='col-4 d-flex flex-column align-items-end mr-2'>
-                            <div className='mb-5 text-right'>
-                                <h5 className='text-right text-white my-4'>
+                        <div className='col-4 d-flex flex-column mr-2'>
+                            <div className='mb-5 '>
+                                <h5 className=' text-white my-4'>
                                     NOW BIDDING FOR
                                 </h5>
-                                <h1 className='text-right'>
-                                    {biddingData.name}
-                                </h1>
-                                <div className='text-right player_info border text-white text-bold text-center px-6 rounded-5 border-orange bg-orange d-inline-block'>
+                                <h1 className=''>{biddingData.name}</h1>
+                                <div className=' player_info playerCat border text-white text-bold text-center px-6 rounded-5 border-orange bg-orange d-inline-block'>
                                     {biddingData.player_category}
                                 </div>
                             </div>
                             <div className='p-2 player_info'>
-                                <strong>Id:</strong> 0{biddingData.id}
+                                <small>Id</small>
+                                <h4>
+                                    {biddingData.id < 10
+                                        ? `0${biddingData.id}`
+                                        : biddingData.id}
+                                </h4>
                             </div>
                             <div className='p-2 player_info'>
-                                Batting Style:{' '}
-                                <strong>{biddingData.batting_Style}</strong>
+                                <small>Batting Style</small>
+                                <h4>{biddingData.batting_Style}</h4>
                             </div>
                             <div className='p-2 player_info'>
-                                Bowling Style:{' '}
-                                <strong>{biddingData.bowling_Style}</strong>
+                                <small>Bowling Style</small>
+                                <h4>{biddingData.bowling_Style}</h4>
                             </div>
                             <div className='p-2 player_info'>
-                                Category:{' '}
-                                <strong>{biddingData.category}</strong>
+                                <small>Category</small>
+                                <h4>{biddingData.category}</h4>
                             </div>
                         </div>
                         <div className='col-4 biddingPlayerImg'>
@@ -75,8 +79,16 @@ const Bidding = () => {
                                 alt='player profile'
                                 className='biddingPlayerProfileImg '
                             />
+                            {biddingData.already_bidded && (
+                                <img
+                                    src={soldOut}
+                                    alt=''
+                                    srcset=''
+                                    className='soldOutImg'
+                                />
+                            )}
                         </div>
-                        <div className='col-4 d-flex flex-column'>
+                        <div className='col-4 d-flex flex-column justify-content-evenly'>
                             <div className='p-2 my-2 text-center biddingPriceBox'>
                                 <span></span>
                                 <span></span>
@@ -91,12 +103,14 @@ const Bidding = () => {
                                 <h2>
                                     $
                                     {biddingData.already_bidded
-                                        ? biddingData.sold_price
-                                        : biddingData.base_price}{' '}
+                                        ? biddingData.sold_price.toLocaleString()
+                                        : biddingData.base_price.toLocaleString(
+                                              1000000000
+                                          )}{' '}
                                 </h2>
                             </div>
                             {biddingData.already_bidded ? (
-                                <div className='p-2 my-1 d-flex gap-3 align-items-center border text-center'>
+                                <div className='p-2 my-1 text-center'>
                                     <img
                                         src={
                                             biddingData.sold_team === 1
@@ -108,7 +122,7 @@ const Bidding = () => {
                                         alt=''
                                         className='p-2 ownerTeamImg'
                                     />
-                                    <h3>
+                                    <h3 className='mt-2'>
                                         {biddingData.sold_team === 1
                                             ? TEAM_ONE
                                             : biddingData.sold_team === 2
@@ -131,7 +145,7 @@ const Bidding = () => {
                     </div>
                 </div>
             ) : (
-                <img src={anim} alt='' className='loading-img mx-auto' />
+                <Animation />
             )}
         </>
     );

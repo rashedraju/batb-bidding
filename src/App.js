@@ -8,27 +8,23 @@ import TeamProfile from './Containers/TeamProfile/TeamProfile';
 import Bidding from './Containers/Bidding/Bidding';
 import axios from 'axios';
 import { CURRENT_PAGE } from './constant';
-import anim from './assets/images/anim.gif';
+import Animation from './Containers/Animation/Animation';
+import AllTeamDetails from './Containers/AllTeamDetails/AllTeamDetails';
 
 function App() {
     let [currentPage, setCurrentPage] = useState(0);
 
-    let currentPageEl = (
-        <img src={anim} alt='' className='loading-img mx-auto' />
-    );
+    let currentPageEl = <Animation />;
 
-    if (currentPage === 1) {
+    if (currentPage === 0) {
+        currentPageEl = <Animation />;
+    } else if (currentPage === 1) {
         currentPageEl = <Bidding />;
-    }
-    if (currentPage === 2) {
+    } else if (currentPage === 2) {
         currentPageEl = <TeamProfile />;
-    }
-
-    if (currentPage === 3) {
+    } else if (currentPage === 3) {
         currentPageEl = <PlayerLists />;
-    }
-
-    if (currentPage === 4) {
+    } else if (currentPage === 4) {
         currentPageEl = <PlayerProfile />;
     }
 
@@ -55,7 +51,7 @@ function App() {
             </header>
 
             {currentPageEl}
-            {/* <Bidding /> */}
+            {/* <TeamProfile /> */}
         </div>
     );
 }

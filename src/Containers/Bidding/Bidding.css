@@ -4,22 +4,23 @@
 
 .biddingPlayerImg {
     background-image: url('../../assets/images/photo-frame.png');
-    width: 25rem;
-    height: 25rem;
+    width: 35rem;
+    height: 35rem;
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .biddingPlayerProfileImg {
-    width: 16rem;
-    height: 18rem;
+    width: 22.5rem;
+    height: 26rem;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-    margin-top: -2.9rem;
-    margin-left: -1.1rem;
+    margin-top: -3.5rem;
+    margin-left: -2rem;
 }
 
 .biddingPriceBox {
@@ -137,4 +138,18 @@
     left: 5%;
     font-size: 4rem;
     color: #ffba00;
+}
+
+.playerCat {
+    color: #0e2b63 !important;
+    font-weight: bold;
+    width: 16rem;
+}
+
+.soldOutImg {
+    position: absolute;
+    bottom: 50px;
+    right: 136px;
+    width: 15rem;
+    transform: rotate(-10deg);
 }
