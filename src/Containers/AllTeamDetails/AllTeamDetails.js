@@ -28,7 +28,7 @@ const TeamProfile = () => {
     if (allTeamDetails) {
         allTeamDetailsEl = allTeamDetails.map((teamDetails) => (
             <div
-                className='border bg-light shadow p-3 px-5 d-flex justify-content-between align-items-center rounded-3'
+                className='border bg-light shadow p-3 px-5 d-flex justify-content-between align-items-center rounded-3 mt-5'
                 style={{
                     backgroundImage: `linear-gradient(45deg, ${teamDetails.team.color_code}, #dfdfdf)`,
                 }}>
@@ -100,13 +100,7 @@ const TeamProfile = () => {
         ));
     }
 
-    return (
-        <div
-            className='d-flex flex-column gap-3'
-            style={{ marginTop: '5.5rem' }}>
-            {allTeamDetailsEl}
-        </div>
-    );
+    return <div className='d-flex flex-column gap-3'>{allTeamDetailsEl}</div>;
 };
 
 export default TeamProfile;

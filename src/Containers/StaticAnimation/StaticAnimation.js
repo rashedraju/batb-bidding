@@ -1,9 +1,9 @@
 import React from 'react';
-import anim from '../../assets/images/anim.gif';
+import anim from '../../assets/images/anim-3.gif';
 import logo from '../../assets/images/logo.png';
 import turnamentLogo from '../../assets/images/main.png';
 
-const Animation = () => {
+const StaticAnimation = () => {
     return (
         <>
             <header
@@ -15,7 +15,7 @@ const Animation = () => {
                     className='turnamentLogo'
                     style={{
                         position: 'absolute',
-                        top: '-9.5rem',
+                        top: '-8rem',
                     }}
                 />
                 <img
@@ -24,7 +24,7 @@ const Animation = () => {
                     className='batLogo'
                     style={{
                         position: 'absolute',
-                        top: '-9.5rem',
+                        top: '-9rem',
                         right: '-5rem',
                     }}
                 />
@@ -45,4 +45,4 @@ const Animation = () => {
     );
 };
 
-export default Animation;
+export default StaticAnimation;

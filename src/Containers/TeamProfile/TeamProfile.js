@@ -13,7 +13,10 @@ const TeamProfile = () => {
     let [teamProfileData, setTeamProfileData] = useState(null);
 
     const playerEl = teamProfileData?.players.map((player) => (
-        <Player player={player} />
+        <Player
+            player={player}
+            colorCode={teamProfileData.team_details.color_code}
+        />
     ));
 
     useEffect(() => {
